@@ -1,0 +1,22 @@
+============================== TEMA 1 ==============================
+
+1. SPARSE JACOBI
+
+- generate_probabilities_system.m
+    Constuieste matricea A si vectorul coloana b, reprezentand sistemul
+de ecuatii generat de probabilitatile din fiecare punct al labirintului.
+Se iau intai colturile labirintului, apoi ce ramane din laturile din
+dreapta si stanga si apoi baza. Pe liniile care corespund colturilor,
+elementul care se afla pe diagoanala va fi egal cu 4, pe liniile care
+corespund laturilor, va fi 5, iar restul diagonalei se completeaza cu
+6. Elementele matricei corespunzatoare vecinilor sut egale cu -1.
+
+- matrix_to_csr
+    Converteste o matrice din forma densa in forma CSR. Ia Elementele
+din matrice pe rand si le cauta pe cele nenule, punand elementul in
+vectorul values si numarul coloanei in colind. Cand gaseste un element
+nenul si este primul de pe linia sa, ii pune indicele din values in
+rowptr.
+
+- Jacobi_factorization
+    

@@ -2,21 +2,60 @@
 
 1. SPARSE JACOBI
 
-- generate_probabilities_system.m
-    Constuieste matricea A si vectorul coloana b, reprezentand sistemul
-de ecuatii generat de probabilitatile din fiecare punct al labirintului.
-Se iau intai colturile labirintului, apoi ce ramane din laturile din
-dreapta si stanga si apoi baza. Pe liniile care corespund colturilor,
-elementul care se afla pe diagoanala va fi egal cu 4, pe liniile care
-corespund laturilor, va fi 5, iar restul diagonalei se completeaza cu
-6. Elementele matricei corespunzatoare vecinilor sut egale cu -1.
+    Se constuieste matricea A si vectorul coloana b, reprezentand
+sistemul de ecuatii generat de probabilitatile din fiecare punct al
+labirintului. Se prelucreaza intai colturile labirintului, apoi ce
+ramane din laturile din dreapta si stanga si apoi baza. Pe liniile
+care corespund colturilor, elementul care se afla pe diagoanala va
+fi egal cu 4, pe liniile care corespund laturilor, va fi 5, iar restul
+diagonalei se completeaza cu 6. Elementele matricei corespunzatoare
+vecinilor sunt egale cu -1. Elementele din vectorul b de la pozitia
+(n - rows + 1) pana la n sunt 1. Apoi acest sistem se rezolva folosind
+metoda Jacobi dupa ce se construiesc matricea G_j si vectorul c_j. 
 
-- matrix_to_csr
-    Converteste o matrice din forma densa in forma CSR. Ia Elementele
-din matrice pe rand si le cauta pe cele nenule, punand elementul in
-vectorul values si numarul coloanei in colind. Cand gaseste un element
-nenul si este primul de pe linia sa, ii pune indicele din values in
-rowptr.
+2. K-MEANS
 
-- Jacobi_factorization
-    
+    Pentru fiecare cluster se iau punctele la rand si se decide care
+dintre ele vor face pare din medie. Dupa ce se calculeaza mediile se
+verifica daca mediile de la pasul curent sunt egale cu mediile de la
+pasul precedent. Daca nu, se va repeda procedeul, iar daca da, va iesi
+din loop si functia va returna acesti noi centroizi.
+    Pentru calculul costutlui se iau centroizii pe rand, se stabileste
+care puncte fac parte din clusterul fiecaruia si sa calculeaza suma
+distantelor de la centroid la puncte.
+
+3.  HOUSEHOLDER PREDICTION
+
+    Pentru histograma RGB se pun cele 3 component (R, G si B) in
+matrice, iar cu functia reshape() acestea sunt transformate in vectori
+linie. Se foloseste functia histc() ca sa se creeze histograma Pentru
+valori intre 0 si 255. Se creeaza un vector, subs, care are valori intre
+0 si count_bins, dar lungime 256. Histograma finala este data de conca-
+tenarea vectorilor rezultati de functia accumarray cu parametrii subs'
+si histogramele cu valori in [0; 255].
+    Functia rgb2hsv2() foloseste algoritmul dat, dar adaptat pentru
+vectori.
+    Histograma HSV se realizeaza in mod similar cu cea RGB, o diferenta
+fiind ca valorile H, S si V sunt in intervalul [0, 1].
+    Functia preprocess ia calea catre imagini si creeaza un cell array cu
+caile catre fiecare poza. Apeleaza apoi rgbHistogram sau hsvHistogram
+folosindu-se de cellfun ca sa creeze matricea X. Sistemul dat de matricea
+X si vectorul y este rezolvat cu Householder, rezultand vectorul de
+parametri ai modelului, w, care se foloseste apoi in predictia pozelor.
+Evaluate() functioneaza prin numararea valorilor mai mari decat 1 din
+vectorii y_real (rezultat din functia preprocess()) si y (rezultat dupa
+inmultirea matricei X cu vectorul w) care sunt pe aceeasi pozitie in
+ambii vectori. Procentul este raportul dintre numarul de valori care
+coincid si numarul total de poze.
+
+4. GRADIENT DESCENT PREDICTION
+
+    Functiile preprocess(), rgbHistogram(), rgb2hsv2() si hsvHistogram()
+sunt exact aceleasi de la problema anterioara. Dupa ce se scaleaza
+matricea X si se creeaza vectorul w cu valori random din intervalul
+[-0.1; 0.1], se intra intr-un loop for. Aici se pun in k valori random
+intre 1 si numarul de linii ale matricei X care sunt folosite pentru
+creearea matricei X_b si a vectorului y_b. In functie de ele se
+determina valoarea lui w care e folosit apoi in predictia pozelor.
+    Evaluate() functioaneaza pe aceeasi idee ca in problema anterioara,
+singura diferenta fiiind ca matricea X este scalata.

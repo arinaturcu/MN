@@ -1,5 +1,5 @@
-function [sol] = rgbHistogram(paths_to_images, count_bins)
-    M = imread(paths_to_images);
+function [sol] = rgbHistogram(paths_to_image, count_bins)
+    M = imread(paths_to_image);
     R = M(:, :, 1);
     G = M(:, :, 2);
     B = M(:, :, 3);

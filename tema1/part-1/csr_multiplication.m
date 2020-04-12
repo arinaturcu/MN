@@ -6,8 +6,8 @@ function [y] = csr_multiplication(values, colind, rowptr, x)
 
         for j = rowptr(i):rowptr(i + 1) - 1
             y(i) = y(i) + values(j) * x(colind(j));
-        end
+        endfor
 
-    end
+    endfor
 
 endfunction

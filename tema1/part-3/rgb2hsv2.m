@@ -1,5 +1,5 @@
 function [H S V] = rgb2hsv2 (R, G, B)
-    % conversia unui vector de pixeli
+    # conversia unui vector de pixeli
     R1 = double(R) / 255;
     G1 = double(G) / 255;
     B1 = double(B) / 255;

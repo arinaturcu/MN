@@ -3,7 +3,7 @@ function [centroids] = clustering_pc(points, NC)
     centroids0 = [];
     [N, D] = size(points);
 
-    % initializare
+    # initializare
     for i = 0:NC - 1
         cluster = [];
 
@@ -16,7 +16,7 @@ function [centroids] = clustering_pc(points, NC)
 
         endfor
 
-        % suma punctelor din cluster
+        # suma punctelor din cluster
         [diml, dimc] = size(cluster);
         sum = 0;
 
@@ -31,7 +31,7 @@ function [centroids] = clustering_pc(points, NC)
     cluster = [];
     centroids = [];
 
-    % calculare centroizi
+    # calculare centroizi
     while 1
 
         for i = 1:NC
@@ -45,7 +45,7 @@ function [centroids] = clustering_pc(points, NC)
 
             endfor
 
-            % suma punctelor din cluster
+            # suma punctelor din cluster
             [diml, dimc] = size(cluster);
             sum = 0;
 

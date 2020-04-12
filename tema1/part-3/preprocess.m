@@ -22,9 +22,9 @@ function [X, y] = preprocess(path_to_dataset, histogram, count_bins)
     imgs = [imgs_cats imgs_not_cats];
 
     if histogram == 'RGB'
-        X = cellfun(@(path_to_image)rgbHistogram(path_to_image, count_bins), imgs, "UniformOutput", false);
+        X = cellfun(@(img)rgbHistogram(img, count_bins), imgs, "UniformOutput", false);
     else
-        X = cellfun(@(path_to_image)hsvHistogram(path_to_image, count_bins), imgs, "UniformOutput", false);
+        X = cellfun(@(img)hsvHistogram(img, count_bins), imgs, "UniformOutput", false);
     endif
 
     X = cell2mat(X);

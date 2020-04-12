@@ -1,4 +1,5 @@
 function [w] = learn(X, y, lr, epochs)
+    batch_size = 64;
     [n m] = size(X);
     X(:, m + 1) = 1;
 
@@ -9,8 +10,8 @@ function [w] = learn(X, y, lr, epochs)
 
     for epoch = 1:epochs
         k = randperm(n);
-        X_b = X(k(1:64), :);
-        y_b = y(k(1:64), 1);
+        X_b = X(k(1:batch_size), :);
+        y_b = y(k(1:batch_size), 1);
 
         w = w - lr * (1 / n) * ((X_b * w - y_b)' * X_b)';
     endfor

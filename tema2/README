@@ -1,0 +1,35 @@
+313CA Arina Emanuela Turcu
+
+============================== TEMA 1 ==============================
+    
+    S-a implementat functia auxiliara list_to_matrix() care primeste
+ca parametru id-ul fisierului cu datele de intrare si transforma
+listele de adicenta intr-o matrice de adiacenta care are pe pozitia
+(i, j) valoarea 1 daca pagina i are link catre pagina j si 0 in rest
+(pe diagonala principala se gasesc doar 0-uri). Functiile Iterative()
+si Algebraic() se vor folosi de ea pentru calcularea vectoului R.
+
+1. ITERATIVE
+    Functia Iterative() calculeaza vectorul R folosind algoritmul
+iterativ explicat la adresa https://en.wikipedia.org/wiki/PageRank.
+Matricea R se initializeaza cu 1/N, unde N este numarul total de pagini.
+Se intra apoi intr-un loop while in care se actualizeaza la fiecare
+pas vectorul R. Se iese din el doar cand intre R de la pasul curent
+si R de la pasul anterior este o diferenta mai mica sau egala cu eps.
+
+2. ALGEBRAIC
+    Calculeaza matricea R folosindu-se de formulele descrise la adresa
+https://en.wikipedia.org/wiki/PageRank. Pentru aplicarea lor a fost
+nevoie de modificarea matricei M de adiacenta astfel: daca elementul de
+pe pozitia (i, j) este egal cu 1, se va modifica si va fi egal cu 
+1/L(j), unde L(j) este numarul de pagini catre care are link pagina j.
+Se aplica apoi formula, folosindu-se de functia PR_Inv() care calculeaza
+inversa unei matrici folosind factorizari Gram-Schmidt.
+
+    In functia PageRank() se afiseaza in fisierul .out numarul de pagini,
+R1 si R2 aflate prin algoritmul iterativ si respectiv prin cel algebric
+si gradele de apartenenta in ordine crescatoare aflat pe baza matricei
+R2 prin functia Apartenenta(). La matricea R2 s-a adaugat o coloana
+auxiliara care retine numarul paginii al caruit grad este cel de pe
+aceeasi linie. S-au sortat descrescator gradele de apartenenta si s-au
+afisat impreuna cu numarul paginii.

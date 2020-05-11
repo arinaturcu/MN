@@ -1,3 +1,5 @@
+313CA Arina Emanuela Turcu
+
 ============================== TEMA 1 ==============================
 
 1. SPARSE JACOBI
@@ -26,7 +28,7 @@ distantelor de la centroid la puncte.
 
 3.  HOUSEHOLDER PREDICTION
 
-    Pentru histograma RGB se pun cele 3 component (R, G si B) in
+    Pentru histograma RGB se pun cele 3 componente (R, G si B) in
 matrice, iar cu functia reshape() acestea sunt transformate in vectori
 linie. Se foloseste functia histc() ca sa se creeze histograma Pentru
 valori intre 0 si 255. Se creeaza un vector, subs, care are valori intre
@@ -42,7 +44,7 @@ caile catre fiecare poza. Apeleaza apoi rgbHistogram sau hsvHistogram
 folosindu-se de cellfun ca sa creeze matricea X. Sistemul dat de matricea
 X si vectorul y este rezolvat cu Householder, rezultand vectorul de
 parametri ai modelului, w, care se foloseste apoi in predictia pozelor.
-Evaluate() functioneaza prin numararea valorilor mai mari decat 1 din
+Evaluate() functioneaza prin numararea valorilor mai mari decat 0 din
 vectorii y_real (rezultat din functia preprocess()) si y (rezultat dupa
 inmultirea matricei X cu vectorul w) care sunt pe aceeasi pozitie in
 ambii vectori. Procentul este raportul dintre numarul de valori care

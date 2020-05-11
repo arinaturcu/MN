@@ -2,7 +2,8 @@ function [R1 R2] = PageRank(nume, d, eps)
     % Calculeaza indicii PageRank pentru cele 3 cerinte
     % Scrie fisierul de iesire nume.out
 
-    fidout = fidin = 0;
+    fidout = 0;
+    fidout = 0;
     fidin = fopen(nume,  'r');
     fidout = fopen(strcat(nume,  '.out'),  'w');
 
@@ -26,9 +27,6 @@ function [R1 R2] = PageRank(nume, d, eps)
 
     % sortez descrescator dupa prima coloana
     R2 = sortrows(R2, -1);
-
-    a = 1 / (val2 - val1);
-    b = -a * val1;
 
     fprintf(fidout,  '\n');
 
